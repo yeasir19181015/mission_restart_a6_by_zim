@@ -62,9 +62,9 @@ const displayProducts = (products) => {
         const productCard = document.createElement("div");
 
         productCard.innerHTML = `
-        <div  class="card bg-base-100 shadow-sm h-full flex flex-col">
+        <div  class=" hover:bg-blue-200 card bg-base-100 shadow-sm h-full flex flex-col">
 
-          <figure class="bg-black/30 px-10 h-64 flex items-center justify-center">
+          <figure class="bg-black/20 px-10 h-64 flex items-center justify-center">
             <img src="${product.image}" class="h-full object-contain" />
           </figure>
 
