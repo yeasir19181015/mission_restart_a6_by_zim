@@ -92,9 +92,10 @@ const displayProducts = (products) => {
             </div>
 
             <div class="flex justify-between mt-4">
-              <div class="btn btn-md px-5">
-                <i class="fa-regular fa-eye"></i> Details
-              </div>
+              <button onclick="showDetails(${product.id})"class="btn btn-md px-5">
+              <i class="fa-regular fa-eye"></i> Details
+              </button>
+
               <div class="btn btn-md bg-blue-600 text-white px-5">
                 <i class="fa-solid fa-cart-arrow-down"></i> Add
               </div>
@@ -164,6 +165,60 @@ function displayCategories(categories) {
         catergoryContainer.append(categoryBtn);
     }
 }
+
+
+
+// =======================
+// SHOW PRODUCT DETAILS
+// =======================
+
+const showDetails = (id) => {
+
+    fetch(`https://fakestoreapi.com/products/${id}`)
+        .then(res => res.json())
+        .then(product => {
+
+            const modalContent = document.getElementById("modal-content");
+
+            modalContent.innerHTML = `
+                <div class="grid md:grid-cols-2 gap-6">
+
+                    <div class="flex justify-center items-center">
+                        <img src="${product.image}" 
+                        class="max-h-72 object-contain" />
+                    </div>
+
+                    <div>
+                        <h2 class="text-xl font-bold mb-3">
+                            ${product.title}
+                        </h2>
+
+                        <p class="text-sm text-gray-600 mb-4">
+                            ${product.description}
+                        </p>
+
+                        <p class="text-lg font-semibold mb-2">
+                            💲 ${product.price}
+                        </p>
+
+                        <p class="mb-4">
+                            ⭐ ${product.rating.rate} 
+                            (${product.rating.count} reviews)
+                        </p>
+
+                        <button class="btn btn-primary w-full">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+
+                </div>
+            `;
+
+            document.getElementById("productModal").showModal();
+        });
+
+};
+
 
 
 // =======================
