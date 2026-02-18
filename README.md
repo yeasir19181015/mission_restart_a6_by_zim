@@ -1,143 +1,146 @@
-## WELCOME TO ( সহজ সরল সিম্পল ) ASSIGNMENT (SwiftCart E-Commerce)
+# JavaScript Interview Questions & Answers
+
+## 1️. What is the difference between null and undefined?
+
+### undefined
+- যখন কোনো ভ্যারিয়েবল declare করা হয় কিন্তু value assign করা হয় না।
+- JavaScript স্বয়ংক্রিয়ভাবে `undefined` সেট করে।
+
+```js
+let name;
+console.log(name); // undefined
+```
+### null
+
+ইচ্ছাকৃতভাবে value খালি করা হয়।
+
+ডেভেলপার নিজে null assign করে।
+
+| undefined             | null                   |
+| --------------------- | ---------------------- |
+| Value assign করা হয়নি | ইচ্ছাকৃতভাবে খালি      |
+| JavaScript auto দেয়   | Developer manually দেয় |
 
 
-## Repository: Create your own public repository and submit the link.
 
----
-## 🛍️ API Endpoints
----
-1. Get 🛍️ All Products
-```bash
-https://fakestoreapi.com/products
+## 2) What is the use of the `map()` function in JavaScript? How is it different from `forEach()`?
+
+### map()
+
+Array এর প্রতিটি element নিয়ে কাজ করে ।
+
+নতুন একটি array return করে ।
+
+সাধারণত data transform করার জন্য ব্যবহার হয় ।
+
+```js
+const numbers = [1, 2, 3];
+const double = numbers.map(num => num * 2);
+
+console.log(double); // [2, 4, 6]
 ```
 
-2. Get 🛍️ All Categories
-```bash
-https://fakestoreapi.com/products/categories
+
+### forEach()
+
+Array এর প্রতিটি element নিয়ে কাজ করে কিছু return করে না । শুধু loop বা side-effect এর জন্য ব্যবহৃত হয় ।
+
+```js
+numbers.forEach(num => {
+  console.log(num);
+});
 ```
 
-3. Get 🛍️ Products by Category
-```bash
-https://fakestoreapi.com/products/category/${category}
+ পার্থক্য
+| map()                    | forEach()              |
+| ------------------------ | ---------------------- |
+| নতুন array return করে    | কিছু return করে না     |
+| Data transform করার জন্য | শুধু iterate করার জন্য |
+
+
+## 3) What is the difference between `==` and `===`?
+
+== (Loose Equality)
+
+শুধু value compare করে
+
+প্রয়োজন হলে type convert করে
+```js
+5 == "5" // true
 ```
 
-Example:
-```bash
-https://fakestoreapi.com/products/category/jewelery
+=== (Strict Equality)
+
+value এবং type দুটোই compare করে
+
+type convert করে না
+
+```js
+5 === "5" // false
 ```
 
-4. Get 🛍️ Single Product Detail
-```bash
-https://fakestoreapi.com/products/${id}
+## 4) What is the significance of `async`/`await` in fetching API data?
+
+async/await asynchronous code সহজ ও readableভাবে লিখতে সাহায্য করে।
+
+API call সাধারণত Promise return করে।
+async/await ব্যবহার করলে code দেখতে synchronous মনে হয়।
+```js
+async function getData() {
+  try {
+    const response = await fetch('https://api.example.com');
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
 ```
 
-Example:
-```bash
-https://fakestoreapi.com/products/1
+গুরুত্ব
+
+Code readable হয়
+
+.then() chaining এড়ানো যায়
+
+Error handling সহজ হয় (try...catch)
+
+Asynchronous operation পরিষ্কারভাবে handle করা যায়
+
+
+
+## 5) Explain the concept of Scope in JavaScript (Global, Function, Block).
+
+Scope মানে হলো — কোন জায়গা থেকে কোন variable access করা যাবে।
+
+### Global Scope
+
+Program এর বাইরে declare করা variable
+
+সব জায়গা থেকে access করা যায়
+``` js
+let name = "Zim";
 ```
 
----
+### Function Scope
 
-## 🎯 Project Specifications (UI/UX)
+Function এর ভিতরে declare করা variable
 
-#### 1) Navbar
-- Website **logo/name** ("SwiftCart") on the **left**
-- **Menu items** (Home, Products, About, Contact) in the **center**
-- **Cart Icon/Button** on the **right** (showing item count is a bonus)
+শুধু সেই function এর ভিতরে কাজ করবে
+```js
+function test() {
+  let age = 25;
+}
+```
+### Block Scope
 
-#### 2) Banner / Hero Section
-- A **background image** (related to shopping/fashion/electronics)
-- A **title** (e.g., "Best Collection For You") and **subtitle**
-- A **centered button** (e.g., "Shop Now")
+{} এর ভিতরে declare করা variable
 
-#### 3) Features / Why Choose Us
-- **Section heading**
-- **3-4 items** highlighting features like "Fast Delivery", "24/7 Support", "Secure Payment", etc. (Icon + Title + Short Text)
+শুধু সেই block এর ভিতরে কাজ করবে
 
-#### 4) Trending / Top Rated Section
-- Show **3 top-rated products** (you can filter by rating or just pick the first 3) based on API data or hardcoded for layout practice.
-
-#### 5) Newsletter & Footer
-- **Newsletter Subscription Form**: Email input + Subscribe button.
-- **Footer** with copyright info, social links, and quick links.
-
-#### 6) Responsiveness
-- Website must be **mobile responsive** 
-
----
-#### 7) Create a README file to answer the following questions-
-
-> **⚠️ Warning:** Do not use any AI tools to answer these questions. You must write the answers in **Bangla**.
-
-#### 1) What is the difference between `null` and `undefined`?
-
-#### 2) What is the use of the `map()` function in JavaScript? How is it different from `forEach()`?
-
-#### 3) What is the difference between `==` and `===`?
-
-#### 4) What is the significance of `async`/`await` in fetching API data?
-
-#### 5) Explain the concept of Scope in JavaScript (Global, Function, Block).
-
-## ⚡ Dynamic Features & Functionalities
-
-1) Category Loading
-Load Product Categories dynamically on the UI (e.g., as filter buttons or a dropdown).
-
-2) Category Click → Product Data
-On clicking a category: load products of that specific category.
-Display in a grid layout (e.g., 3 or 4 columns).
-
-3) Card Contents
-Each product card must include:
-- **Image** (from API)
-- **Title** (truncated if too long)
-- **Price** ($ value)
-- **Category** (badge or text)
-- **Rating** (Visualize stars or just show the number)
-- **Details Button**
-- **Add to Cart button**
-
-4) Modal on "Details" Click
-Clicking the "Details" button on a card opens a modal with full product details:
-- Full Title
-- Full Description
-- Price & Rating
-- "Buy Now" or "Add to Cart" button in modal.
-
-## 🧪 Challenges (Optional)
-
-    1) Add to Cart Interaction
-    Clicking "Add to Cart":
-    - Adds the product to a Cart list/array.
-    - Updates a Cart Count in the Navbar.
-    - (Optional) Persist in LocalStorage.
-
-    2) Cart Calculation
-    Show a summary (maybe in a sidebar or a separate section/modal) that lists added items and calculates the **Total Price**.
-
-    3) Remove from Cart
-    Ability to remove an item from the cart and update the Total Price instantly.
-
-    4) Loading Spinner
-    Show a loading spinner or skeleton loader while fetching data from the API.
-
-    5) Active State
-    Highlight the currently selected category button.
-
-🧰 Technology Stack:
-    HTML
-    CSS (Vanilla / Tailwind / DaisyUI)
-    JavaScript (Vanilla only, no frameworks like React/Vue for this assignment)
-
-📌 Rules
-✅ At least 5 meaningful commits
-❌ No dummy text where real data can be shown.
-
-## 🔗 Submission
-- **Live Link :** YOUR_DEPLOYED_URL_HERE
-- **GitHub Repository:** YOUR_REPO_URL_HERE
-
-
-### 📅 Deadline For 60 marks: 17th February, 2026 (11:59 pm ⏱️)
-- Note: There won't be any 50 or 30 marks submission deadline. Only 60 marks submission deadline. After 17th February, 2026 (11:59 pm ⏱️) no submission will be accepted.
+let এবং const block scoped
+``` js
+{
+  let city = "Dhaka";
+}
+```
